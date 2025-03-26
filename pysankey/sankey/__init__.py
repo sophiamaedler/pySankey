@@ -285,6 +285,7 @@ def draw_vertical_bars(
     rightLabels: ndarray,
     rightWidths: Dict,
     xMax: float64,
+    linewidth: int = 0,
 ) -> None:
     # Draw vertical bars on left and right of each  label's section & print label
     for leftLabel in leftLabels:
@@ -294,6 +295,7 @@ def draw_vertical_bars(
             2 * [leftWidths[leftLabel]["bottom"] + leftWidths[leftLabel]["left"]],
             color=colorDict[leftLabel],
             alpha=0.99,
+            lw = linewidth
         )
         ax.text(
             -0.05 * xMax,
@@ -309,6 +311,7 @@ def draw_vertical_bars(
             2 * [rightWidths[rightLabel]["bottom"] + rightWidths[rightLabel]["right"]],
             color=colorDict[rightLabel],
             alpha=0.99,
+            lw = linewidth
         )
         ax.text(
             1.05 * xMax,
@@ -438,6 +441,7 @@ def plot_strips(
                         x + x[::-1] + [x[0]],
                         list(ys_d) + list(ys_u)[::-1] + [ys_d[0]],
                         facecolor="none",
+                        lw = 0, # no border
                     )
 
                     # get the extent of the axes
@@ -472,6 +476,7 @@ def plot_strips(
                         ys_u,
                         alpha=alpha,
                         color=color,
+                        lw = 0, # no border
                     )
     ax.axis("off")
 
